@@ -234,7 +234,7 @@ a:focus {
   -o-background-size: cover;
 }
 #map-title {
-  padding: 150px 0;
+  padding: 180px 0 130px;
 }
 section#map {
   width: 100%;
@@ -251,6 +251,23 @@ section#map {
   #map {
     height: 400px;
   }
+}
+#register input.inverse {
+  background-color: #000000;
+  color: #FFFFFF;
+  border-radius: 20px;
+  text-align: center;
+}
+.results-section {
+  width: 100%;
+  padding: 250px 0;
+  color: white;
+  background: url(/img/tam-at-night.jpg) no-repeat center center scroll;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
 }
 .btn {
   text-transform: uppercase;
