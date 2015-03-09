@@ -34,5 +34,9 @@ handlers:
   static_files: static/index.html
   upload: static/index.html
 
+- url: /admin
+  static_files: static/admin.html
+  upload: static/admin.html
+
 - url: /app/.*
   script: main.app

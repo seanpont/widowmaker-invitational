@@ -81,7 +81,7 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <h1 class="brand-heading">GET YOUR GOAT ON</h1>
-          <p class="intro-text">Two miles long with 1660 feet of elevation. It is the most direct route up our most iconic mountain.</p>
+          <p class="intro-text">Two miles long with 2000 feet of elevation. It is the most direct route up our most iconic mountain.</p>
           <a href="#about" class="btn btn-circle page-scroll">
             <i class="fa fa-angle-double-down animated"></i>
           </a>
@@ -96,8 +96,8 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2">
       <h2>About The Widowmaker Invitational</h2>
-      <p>The Widowmaker more than a rock-strewn, washed-out gully running up the backbone of Mount Tamalpais. It's a Strava segment, a threat towards tired legs, a ravine so steep that only goats may pass.</p>
-      <p>On <i id="date-of-event">Saturday, April 25th at 8:30 AM</i>, a non-organized unofficial run may occur up said ravine to the summit, after which prizes will be awarded non-randomly.</p>
+      <p>The Widowmaker is more than a rock-strewn, washed-out gully running up the backbone of Mount Tamalpais. It's a Strava segment, a threat towards tired legs, a ravine so steep that only goats may pass.</p>
+      <p>On <i id="date-of-event">some date</i>, a non-organized unofficial run may occur up said ravine to the summit, after which prizes will be awarded non-randomly.</p>
       <p>Due to the narrowness of the course, as well as restrictions on the number of guys named Galen allowed on the mountain at any given time, this event is by invitation only. </p>
     </div>
   </div>
@@ -192,6 +192,45 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="js/grayscale.js"></script>
+
+<!-- Form Handler -->
+<script>
+  var $form = $('#registration-form');
+  var $inputName = $('#inputName');
+  var $inputEmail = $('#inputEmail');
+  var $inputCode = $('#inputCode');
+  var $inputSubmit = $('#inputSubmit');
+  $form.submit(function(event) {
+    event.preventDefault();
+    $inputSubmit.prop('disabled', true);
+
+    $inputName.parent().toggleClass('has-error', $inputName.val() == "");
+    $inputEmail.parent().toggleClass('has-error', $inputEmail.val() == "");
+    $inputCode.parent().toggleClass('has-error', $inputCode.val() == "");
+    if ($('.has-error').length) {
+      $inputSubmit.prop('disabled', false);
+      return false;
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: "/app/register",
+      data: {
+        "name": $inputName.val(),
+        "email": $inputEmail.val(),
+        "code": $inputCode.val()
+      },
+      success: function(response) {
+        console.log(response);
+      },
+      error: function(response) {
+        console.log(response)
+      }
+    });
+
+    return false
+  });
+</script>
 
 </body>
 
